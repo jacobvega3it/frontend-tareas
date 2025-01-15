@@ -15,17 +15,15 @@
 export default {
   data() {
     return {
-      newTask: "",
+      newTask: '',
       tasks: [],
     };
   },
   methods: {
     addTask() {
       if (this.newTask){
-        console.log(this.newTask);
         this.tasks.push(this.newTask);
-        console.log(this.tasks);
-        this.newTask = "";
+        this.newTask = '';
       }
     },
     removeTask(index) {
