@@ -1,21 +1,19 @@
 <template>
   <div>
-    <ListadoTareas />
-    <ContadorReactivo />
-    <PropiedadComputada />
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/tasks">Tareas</router-link> |
+      <router-link to="/about">Acerca De</router-link>
+    </nav>
+  </div>
+  <div>
+    <RouterView />
   </div>
 </template>
 
 <script>
-import ContadorReactivo from './components/ContadorReactivo.vue';
-import ListadoTareas from './components/ListadoTareas.vue';
-import PropiedadComputada from './components/PropiedadComputada.vue';
-
 export default {
-  components: {
-    ContadorReactivo, 
-    ListadoTareas,
-    PropiedadComputada
-  }
+  name: 'App',
 };
 </script>
+
