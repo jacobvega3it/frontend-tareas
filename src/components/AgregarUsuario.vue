@@ -17,7 +17,6 @@
 </template>
 
 <script>
-
 import { ref } from 'vue';
 import axios from 'axios';
 
@@ -31,9 +30,7 @@ export default {
         const agregarUsuario = async () => {
             try {
                 const response = await axios.post('https://dummyjson.com/users/add', {
-                    firstName: nombre.value,
-                    lastName: apellido.value,
-                    age: edad.value
+                    firstName: nombre.value, lastName: apellido.value, age: edad.value
                 });
                 nombre.value = '';
                 apellido.value = '';
@@ -47,13 +44,8 @@ export default {
         }
 
         return {
-            nombre,
-            apellido,
-            edad,
-            mensaje,
-            agregarUsuario
+            nombre, apellido, edad, mensaje, agregarUsuario
         }
     }
 }
-
 </script>

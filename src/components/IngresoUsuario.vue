@@ -9,6 +9,8 @@
             <p><button type="submit">Iniciar sesión</button></p>
         </form>
     </div>
+    <p>Puede obtener una lista de usuarios posibles desde la siguiente ruta:</p>
+    <p><a href="https://dummyjson.com/users" target="_blank">Usuarios</a></p>
 </template>
 
 <script>
@@ -43,5 +45,4 @@ export default {
         }
     }
 }
-
 </script>
