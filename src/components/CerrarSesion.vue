@@ -9,6 +9,7 @@ export default {
     name: 'CerrarSesion',
     mounted() {
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
         console.log('Cierre de sesión exitoso');
         this.$router.push('/login');
     }

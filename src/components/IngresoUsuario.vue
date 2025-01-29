@@ -31,6 +31,8 @@ export default {
                     password: password.value
                 });
                 localStorage.setItem('token', response.data.accessToken);
+                localStorage.setItem('userId', response.data.id);
+
                 console.log('Inicio de sesión exitoso:', response.data);
                 router.push(`/home`);
             } catch (error) {

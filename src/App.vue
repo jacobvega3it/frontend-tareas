@@ -6,6 +6,7 @@
       <router-link to="/home">Home</router-link> |
       <router-link to="/tasks">Tareas</router-link> |
       <router-link to="/todos">To-Do</router-link> |
+      <router-link to="/newtodo">New To-Do</router-link> |
       <router-link to="/about">Acerca De</router-link> |
       <router-link to="/close">Cerrar Sesión</router-link>
     </nav>
