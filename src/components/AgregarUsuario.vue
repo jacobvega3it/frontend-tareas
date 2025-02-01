@@ -7,45 +7,55 @@
         <p>{{ mensaje }}</p>
     </div>
     <div>
-        <form @submit.prevent="agregarUsuario">
-            <p>Nombre: <input v-model="nombre" placeholder="Ingrese un nombre" required /></p>
-            <p>Apellido: <input v-model="apellido" placeholder="Ingrese un apellido" required /></p>
-            <p>Edad: <input v-model="edad" type="number" required /></p>
+        <Form :validation-schema="schema" @submit="agregarUsuario">
+            <p>Nombre: <Field name="nombre" placeholder="Ingrese un nombre" /></p>
+            <ErrorMessage name="nombre" />
+            
+            <p>Apellido: <Field name="apellido" placeholder="Ingrese un apellido" /></p>
+            <ErrorMessage name="apellido" />
+            
+            <p>Edad: <Field name="edad" type="number" placeholder="Ingrese su edad" /></p>
+            <ErrorMessage name="edad" />
+            
             <p><button type="submit">Agregar</button></p>
-        </form>
+        </Form>
     </div>
 </template>
 
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
+import * as yup from 'yup';
 
 export default {
     setup() {
-        const nombre = ref('');
-        const apellido = ref('');
-        const edad = ref(0);
         const mensaje = ref('');
 
-        const agregarUsuario = async () => {
+        const schema = yup.object({
+            nombre: yup.string().required('El nombre es obligatorio'),
+            apellido: yup.string().required('El apellido es obligatorio'),
+            edad: yup.number().required('La edad es obligatoria')
+                .min(1, 'La edad debe ser mayor a 0')
+                .max(150, 'La edad debe ser menor a 150'),
+        });
+
+        const agregarUsuario = async (values, { resetForm }) => {
             try {
+                console.log('Valores recibidos:', values);
                 const response = await axios.post('https://dummyjson.com/users/add', {
-                    firstName: nombre.value, lastName: apellido.value, age: edad.value
+                    firstName: values.nombre, lastName: values.apellido, age: values.edad,
                 });
-                nombre.value = '';
-                apellido.value = '';
-                edad.value = 0;
                 mensaje.value = 'Usuario registrado exitosamente';
                 console.log('Usuario registrado:', response.data);
+                
+                resetForm();
             } catch (error) {
                 mensaje.value = 'Error al registrar usuario';
-                console.error('Error:',error);
+                console.error('Error:', error);
             }
-        }
+        };
 
-        return {
-            nombre, apellido, edad, mensaje, agregarUsuario
-        }
+        return { agregarUsuario, mensaje, schema };
     }
-}
+};
 </script>
