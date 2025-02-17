@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FormularioEnvio > should match snapshot 1`] = `
+"<form>
+  <p><input placeholder="Ingrese un email"></p>
+  <p><button type="submit">Enviar</button></p>
+</form>"
+`;

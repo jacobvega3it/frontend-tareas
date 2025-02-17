@@ -36,7 +36,7 @@ export default {
                 console.log('Inicio de sesión exitoso:', response.data);
                 router.push(`/home`);
             } catch (error) {
-                console.error('Error de autenticación:', error);
+                console.error('Error de autenticación', error);
             }
         }
 
